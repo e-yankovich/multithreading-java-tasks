@@ -21,7 +21,7 @@ public class Initializer {
         ClassLoader classLoader = Initializer.class.getClassLoader();
         try (InputStream inputStream = classLoader.getResourceAsStream(resourceName)) {
             if (inputStream == null) {
-                logger.error("Файл не найден: {}", resourceName);
+                logger.error("The file is not found: {}", resourceName);
                 return vehicles;
             }
 
@@ -30,7 +30,7 @@ public class Initializer {
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.trim().split("\\s+");
                 if (parts.length != 4) {
-                    logger.warn("Строка пропущена: {}", line);
+                    logger.warn("String is missing: {}", line);
                     continue;
                 }
 
@@ -42,14 +42,14 @@ public class Initializer {
                 switch (type) {
                     case "Car" -> vehicles.add(new Car(id, weight, area));
                     case "Truck" -> vehicles.add(new Truck(id, weight, area));
-                    default -> logger.warn("Неизвестный тип транспорта: {}", type);
+                    default -> logger.warn("Unknown type of transport: {}", type);
                 }
             }
 
-            logger.info("Загружено {} транспортных средств из {}", vehicles.size(), resourceName);
+            logger.info("Loaded {} vehicles from {}", vehicles.size(), resourceName);
 
         } catch (Exception e) {
-            logger.error("Ошибка при загрузке файла {}: {}", resourceName, e.getMessage(), e);
+            logger.error("En error occurred while loading the file {}: {}", resourceName, e.getMessage(), e);
         }
 
         return vehicles;

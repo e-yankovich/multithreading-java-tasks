@@ -2,15 +2,12 @@ package com.ferry.core;
 
 import com.ferry.state.FerryState;
 import com.ferry.state.LoadingState;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Ferry {
-    private static final Logger logger = LogManager.getLogger(Ferry.class);
 
     private final int maxWeight;
     private final int maxArea;
@@ -79,7 +76,6 @@ public class Ferry {
     }
 
     public boolean isReadyForLoading() {
-        logger.debug("Ferry state: {}", currentState.getClass().getSimpleName());
         return currentState instanceof LoadingState;
     }
 }

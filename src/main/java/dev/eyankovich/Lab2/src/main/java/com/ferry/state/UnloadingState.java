@@ -26,6 +26,7 @@ public class UnloadingState implements FerryState {
             Thread.currentThread().interrupt();
         }
 
+        // Moving to the next state - sailing back
         ferry.setState(new SailingBackState(ferry)); // переход на возвращение
         ferry.sailAndReset();
     }

@@ -5,5 +5,5 @@ import org.apache.logging.log4j.Logger;
 
 public interface FerryState {
     void handle();
-    static final Logger logger = LogManager.getLogger(FerryState.class);
+    Logger logger = LogManager.getLogger(FerryState.class);
 }

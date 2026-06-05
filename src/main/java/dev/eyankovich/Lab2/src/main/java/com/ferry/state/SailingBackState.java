@@ -25,8 +25,9 @@ public class SailingBackState implements FerryState {
         }
 
         logger.info("Ferry has returned and is ready to load.");
+
+        // Moving to the next state - sailing
         ferry.setState(new LoadingState(ferry));
-        logger.debug("Ferry returned and signaling dispatcher to check the queue.");
-        FerryManager.getInstance().signalDispatcher(); // заставляем диспетчер проверить очередь
+        FerryManager.getInstance().signalDispatcher();
     }
 }

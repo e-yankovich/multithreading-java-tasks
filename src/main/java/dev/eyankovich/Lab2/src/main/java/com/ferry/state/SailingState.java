@@ -15,10 +15,11 @@ public class SailingState implements FerryState {
     public void handle() {
         try {
             logger.info("Ferry is sailing...");
-            TimeUnit.SECONDS.sleep(2); // вместо Thread.sleep
+            TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
+        // Moving to the next state - unloading
         ferry.setState(new UnloadingState(ferry));
         ferry.sailAndReset();
     }

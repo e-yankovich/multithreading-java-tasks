@@ -11,7 +11,7 @@ public class LoadingState implements FerryState {
 
     @Override
     public void handle() {
-        // Переход к плаванию после загрузки
+        // Moving to the next state - sailing
         ferry.setState(new SailingState(ferry));
         ferry.sailAndReset();
     }
